@@ -26,7 +26,7 @@ public class PathFinder : MonoBehaviour
             else
             {
                 grid.Add(gridPos, wayPoint);
-                if ()
+                // if ()
 
         
                 wayPoint.SetTopColor(Color.black);
