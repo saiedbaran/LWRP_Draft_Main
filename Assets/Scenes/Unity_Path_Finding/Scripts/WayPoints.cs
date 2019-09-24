@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WayPoints : MonoBehaviour
 {
+    public bool isExplored = false;
+    public WayPoints exploredFrom;
+
     const int gridSize = 10;
 
     public int GetGridSize()
@@ -21,11 +24,18 @@ public class WayPoints : MonoBehaviour
 
     public void SetTopColor(Color color)
     {
-        print(transform.Find("Top").GetComponent<MeshRenderer>());
+        //print(transform.Find("Top").GetComponent<MeshRenderer>());
         MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
         //topMeshRenderer.material.color = color; //Old Renderpipeline 
         var materialBlock = new MaterialPropertyBlock();
         materialBlock.SetColor("_BaseColor", color);
         topMeshRenderer.SetPropertyBlock(materialBlock);
+    }
+    void Update()
+    {
+        if (isExplored)
+        {
+            //SetTopColor(Color.blue);
+        }
     }
 }
