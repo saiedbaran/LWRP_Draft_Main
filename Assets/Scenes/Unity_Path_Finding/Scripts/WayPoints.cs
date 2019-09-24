@@ -14,14 +14,18 @@ public class WayPoints : MonoBehaviour
     public Vector2Int GetGridPos()
     {
         return new Vector2Int(
-            Mathf.RoundToInt(transform.position.x / gridSize) * gridSize,
-            Mathf.RoundToInt(transform.position.z / gridSize) * gridSize
+            Mathf.RoundToInt(transform.position.x / gridSize),
+            Mathf.RoundToInt(transform.position.z / gridSize)
         );
     }
 
     public void SetTopColor(Color color)
     {
-        MeshRenderer meshRendererTop = transform.Find("Top").GetComponent<MeshRenderer>();
-        meshRendererTop.material.color = color;
+        print(transform.Find("Top").GetComponent<MeshRenderer>());
+        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
+        //topMeshRenderer.material.color = color; //Old Renderpipeline 
+        var materialBlock = new MaterialPropertyBlock();
+        materialBlock.SetColor("_BaseColor", color);
+        topMeshRenderer.SetPropertyBlock(materialBlock);
     }
 }
