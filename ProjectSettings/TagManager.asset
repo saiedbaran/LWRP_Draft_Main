@@ -9,6 +9,7 @@ TagManager:
   - WaterDrop
   - Ground
   - CactusEnemy
+  - FullWater
   layers:
   - Default
   - TransparentFX
